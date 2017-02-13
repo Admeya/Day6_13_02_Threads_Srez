@@ -29,6 +29,9 @@ public class Main {
                         int num = r.nextInt(99);
                         pm.runPrint(num);
                         commonResource(num);
+                        for (Map.Entry map: comMap.entrySet()){
+                            System.out.println(map.getKey() + "   " + map.getValue());
+                        }
                         Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -67,20 +70,17 @@ public class Main {
                     AtomicInteger countNum = (AtomicInteger) map.getValue();
                     countNum.getAndIncrement();
                     comMap.put(num, countNum);
-                    System.out.println(map.getKey() + "   " + map.getValue());
 
                 } else {
                     AtomicInteger countNum = new AtomicInteger(1);
                     comMap.put(num, countNum);
-
-                    System.out.println(num + "   " + countNum.get());
                 }
             }
         } else {
             AtomicInteger countNum = new AtomicInteger(1);
             comMap.put(num, countNum);
 
-            System.out.println(num + "   " + countNum.get());
+
         }
     }
 }
